@@ -7,21 +7,21 @@ public class S_PlayerController : MonoBehaviour
 	public float currentSpeed;
 	public float walkSpeed;
 	public float runSpeed;
-	public float turningSpeed;
+	//public float turningSpeed;
 
 	public bool isRunning = false;
 	public bool isJumping = false;
 	public bool isDodging = false;
 
-	private Rigidbody rb;
+	private Rigidbody myRigidBody;
 
 	// Use this for initialization
 	void Start ()
 	{
-		rb = GetComponent<Rigidbody> ();
+		myRigidBody = GetComponent<Rigidbody> ();
 
 		currentSpeed = walkSpeed;
-		turningSpeed = currentSpeed * 100;
+		//turningSpeed = currentSpeed * 100;
 	}
 	
 	// Update is called once per frame
@@ -34,10 +34,52 @@ public class S_PlayerController : MonoBehaviour
 //
 //		transform.Translate(hAxis * currentSpeed * Time.deltaTime, 0, vAxis * currentSpeed * Time.deltaTime);
 
-		float horizontal = Input.GetAxis ("Horizontal") * turningSpeed * Time.deltaTime;
-		transform.Rotate(0, horizontal, 0);
+//		float horizontal = Input.GetAxis ("Horizontal") * turningSpeed * Time.deltaTime;
+//		transform.Rotate(0, horizontal, 0);
+//
+//		float vertical = Input.GetAxis ("Vertical") * currentSpeed * Time.deltaTime;
+//		transform.Translate (0, 0, vertical);
 
-		float vertical = Input.GetAxis ("Vertical") * currentSpeed * Time.deltaTime;
-		transform.Translate (0, 0, vertical);
+		// up
+		if (Input.GetAxis ("Vertical") > 0)
+		{
+			transform.rotation = Quaternion.Euler (0, 0, 0);
+			myRigidBody.AddForce (transform.forward * currentSpeed* Time.deltaTime);
+
+			print ("up");
+		}
+
+		// down
+		if (Input.GetAxis ("Vertical") < 0)
+		{
+			transform.rotation = Quaternion.Euler (0, 180, 0);
+			myRigidBody.AddForce (transform.forward * currentSpeed* Time.deltaTime);
+
+			print ("down");
+		}
+
+		// right
+		if (Input.GetAxis ("Horizontal") > 0)
+		{
+			transform.rotation = Quaternion.Euler (0, 90, 0);
+			myRigidBody.AddForce (transform.forward * currentSpeed* Time.deltaTime);
+
+			print ("right");
+		}
+
+		// left
+		if (Input.GetAxis ("Horizontal") < 0)
+		{
+			transform.rotation = Quaternion.Euler (0, 270, 0);
+			myRigidBody.AddForce (transform.forward * currentSpeed* Time.deltaTime);
+
+			print ("left");
+		}
+
+//		if (Input.GetAxis ("Vertical") < 0.5 && Input.GetAxis ("Vertical") > -0.5f)
+//		{
+//			myRigidBody.AddForce (transform.forward * 0);
+//			print ("stopping");
+//		}
 	}
 }

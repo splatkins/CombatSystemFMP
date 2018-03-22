@@ -14,7 +14,13 @@ public class S_CameraTarget : MonoBehaviour
 
 	Vector3 offset;
 
-	//public float rotateSpeed = 9;
+	public float height;
+	public float distance;
+
+	private Vector3 offsetX;
+	private Vector3 offsetY;
+
+	public float rotateSpeed = 9f;
 
 	public Transform target;
 	private GameObject player;
@@ -22,27 +28,39 @@ public class S_CameraTarget : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		//Cursor.lockState = CursorLockMode.Locked;
-		//Cursor.visible = false;
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
 
 		player = GameObject.FindWithTag ("Player");
 		target = player.transform;
 
 		//transform.Rotate(player.transform.rotation.x + camRotationX, player.transform.rotation.y + camRotationY, player.transform.rotation.z + camRotationZ);
 	
-		offset = target.transform.position - transform.position;
-	
+		//offsetX = new Vector3 (0, height, distance);
+		//offsetY = new Vector3 (0, 0, distance);
+
+		offset = new Vector3 (target.position.x, target.position.y + height, target.position.z + distance);
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
+
+
 		//transform.position = new Vector3 (player.transform.position.x + camOffsetX, player.transform.position.y + camOffsetY, player.transform.position.z + camOffsetZ);
+
+
 		//transform.rotation.eulerAngles = new Vector3 (player.transform.rotation.x + camRotationX, player.transform.rotation.y + camRotationY, player.transform.rotation.z + camRotationZ);
 
 		//transform.eulerAngles = new Vector3 (0 + camRotationX, target.transform.eulerAngles.y, 0);
 		//float horizontal = Input.GetAxis("Mouse X") * rotateSpeed;
 
+//		float desiredAngle = target.transform.eulerAngles.y;
+//		Quaternion rotation = Quaternion.Euler (0, desiredAngle, 0);
+//
+//		transform.position = target.transform.position - (rotation * offset);
+//
+//		transform.LookAt (target.transform);
 
 //	public GameObject target;
 //	public float rotateSpeed = 9;
@@ -72,11 +90,13 @@ public class S_CameraTarget : MonoBehaviour
 
 	void LateUpdate()
 	{
-		float desiredAngle = target.transform.eulerAngles.y;
-		Quaternion rotation = Quaternion.Euler (0, desiredAngle, 0);
+		//offsetX = Quaternion.AngleAxis (Input.GetAxis ("Mouse X") * rotateSpeed, Vector3.up) * offsetX;
+		//offsetY = Quaternion.AngleAxis (Input.GetAxis ("Mouse Y") * rotateSpeed, Vector3.right) * offsetY;
 
-		transform.position = target.transform.position - (rotation * offset);
+		offset = Quaternion.AngleAxis (Input.GetAxis ("Mouse X") * rotateSpeed, Vector3.up) * offset;
 
-		transform.LookAt (target.transform);
+		transform.position = target.position + offset;
+		transform.LookAt (target.position);
 	}
+		
 }
