@@ -584,7 +584,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1466216115375272}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.347, y: 0.8995, z: 0.26119998}
+  m_LocalPosition: {x: -0.347, y: 0.8995, z: 0.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4042074653220278}
@@ -636,7 +636,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1016053441135756}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.347, y: 0.8995, z: 0.26119998}
+  m_LocalPosition: {x: 0.347, y: 0.8995, z: 0.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4829048114181600}
@@ -1437,8 +1437,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myLeftHand: {fileID: 4408287183885026}
-  myRightHand: {fileID: 0}
-  oneHandedWeapons: []
+  myRightHand: {fileID: 4622515837747846}
+  oneHandedWeapons:
+  - {fileID: 1170631909759454, guid: afa6717249a1a8f4eacbe6a1756609a9, type: 2}
+  - {fileID: 1773246407273626, guid: 51ab54ee8059a6b48a5df45b0334f829, type: 2}
+  - {fileID: 1023056434000226, guid: ee0880a3c81a7224e8f8ca2d2ada51b5, type: 2}
+  - {fileID: 1023441910993682, guid: e23da42d4d7fc3945bdc9b952abfcf60, type: 2}
+  - {fileID: 1624943827968020, guid: a36caea5e49e22f42bc8329f340ad67b, type: 2}
+  - {fileID: 1263531185629894, guid: aadf1ab09e4e1b84aa0fc388ae2f615c, type: 2}
   shields:
   - {fileID: 1345859863507590, guid: a75d4f94f6692b8499fd633a1b888011, type: 2}
   leftHandEquipped: {fileID: 0}
@@ -1455,11 +1461,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSpeed: 0
-  walkSpeed: 200
-  runSpeed: 6
+  walkSpeed: 175
+  runSpeed: 500
   isRunning: 0
   isJumping: 0
   isDodging: 0
+  myCamera: {fileID: 0}
 --- !u!135 &135121013787672038
 SphereCollider:
   m_ObjectHideFlags: 1

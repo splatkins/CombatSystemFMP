@@ -17,8 +17,8 @@ public class S_CameraTarget : MonoBehaviour
 	public float height;
 	public float distance;
 
-	private Vector3 offsetX;
-	private Vector3 offsetY;
+	//private Vector3 offsetX;
+	//private Vector3 offsetY;
 
 	public float rotateSpeed = 9f;
 
@@ -45,7 +45,7 @@ public class S_CameraTarget : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-
+		
 
 		//transform.position = new Vector3 (player.transform.position.x + camOffsetX, player.transform.position.y + camOffsetY, player.transform.position.z + camOffsetZ);
 
@@ -96,7 +96,7 @@ public class S_CameraTarget : MonoBehaviour
 		offset = Quaternion.AngleAxis (Input.GetAxis ("Mouse X") * rotateSpeed, Vector3.up) * offset;
 
 		transform.position = target.position + offset;
-		transform.LookAt (target.position);
+		transform.LookAt (new Vector3(target.position.x, target.position.y + 2f, target.position.z));
 	}
 		
 }

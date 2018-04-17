@@ -15,6 +15,7 @@ public class S_PlayerController : MonoBehaviour
 
 	private Rigidbody myRigidBody;
 
+	public Camera myCamera;
 	// Use this for initialization
 	void Start ()
 	{
@@ -40,29 +41,54 @@ public class S_PlayerController : MonoBehaviour
 //		float vertical = Input.GetAxis ("Vertical") * currentSpeed * Time.deltaTime;
 //		transform.Translate (0, 0, vertical);
 
-		// up
+		if (Input.GetKey(KeyCode.LeftShift))
+		{
+			currentSpeed = runSpeed;
+			isRunning = true;
+			print("running");
+		}
+			else
+		{
+			currentSpeed = walkSpeed;
+			isRunning = false;
+		}
+			
+		// forwards
 		if (Input.GetAxis ("Vertical") > 0)
 		{
-			transform.rotation = Quaternion.Euler (0, 0, 0);
-			myRigidBody.AddForce (transform.forward * currentSpeed* Time.deltaTime);
+			//transform.rotation = Quaternion.Euler (0, 0, 0);
+			//transform.localRotation = Quaternion.Euler (0, 0, 0);
 
-			print ("up");
+			transform.rotation = Quaternion.LookRotation(myCamera.transform.forward);
+
+			myRigidBody.AddForce (myCamera.transform.forward * currentSpeed * Time.deltaTime);
+
+			print ("forwards");
 		}
-
-		// down
+			
+		// backwards
 		if (Input.GetAxis ("Vertical") < 0)
 		{
-			transform.rotation = Quaternion.Euler (0, 180, 0);
-			myRigidBody.AddForce (transform.forward * currentSpeed* Time.deltaTime);
+			//transform.rotation = Quaternion.Euler (0, 180, 0);
 
-			print ("down");
+			//transform.rotation = Quaternion.Inverse(myCamera.transform.rotation);
+			//transform.rotation = Quaternion.Euler(-myCamera.transform.rotation.eulerAngles);
+
+			transform.rotation = Quaternion.LookRotation(-myCamera.transform.forward);
+
+			myRigidBody.AddForce (-myCamera.transform.forward * currentSpeed * Time.deltaTime);
+
+			print ("backwards");
 		}
 
 		// right
 		if (Input.GetAxis ("Horizontal") > 0)
 		{
-			transform.rotation = Quaternion.Euler (0, 90, 0);
-			myRigidBody.AddForce (transform.forward * currentSpeed* Time.deltaTime);
+			//transform.rotation = Quaternion.Euler (0, 90, 0);
+
+			transform.rotation = Quaternion.LookRotation(myCamera.transform.right);
+
+			myRigidBody.AddForce (myCamera.transform.right * currentSpeed * Time.deltaTime);
 
 			print ("right");
 		}
@@ -70,8 +96,11 @@ public class S_PlayerController : MonoBehaviour
 		// left
 		if (Input.GetAxis ("Horizontal") < 0)
 		{
-			transform.rotation = Quaternion.Euler (0, 270, 0);
-			myRigidBody.AddForce (transform.forward * currentSpeed* Time.deltaTime);
+			//transform.rotation = Quaternion.Euler (0, 270, 0);
+
+			transform.rotation = Quaternion.LookRotation(-myCamera.transform.right);
+
+			myRigidBody.AddForce (-myCamera.transform.right * currentSpeed * Time.deltaTime);
 
 			print ("left");
 		}
