@@ -39,7 +39,7 @@ public class S_CameraTarget : MonoBehaviour
 		//offsetX = new Vector3 (0, height, distance);
 		//offsetY = new Vector3 (0, 0, distance);
 
-		offset = new Vector3 (target.position.x, target.position.y + height, target.position.z + distance);
+		offset = new Vector3 (target.position.x, target.position.y + height, target.position.z - distance);
 	}
 
 	// Update is called once per frame
