@@ -51,8 +51,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\S_AmIHit.cs" />
      <Compile Include="Assets\Scripts\S_CameraTarget.cs" />
      <Compile Include="Assets\Scripts\S_CurrentWeapon.cs" />
+     <Compile Include="Assets\Scripts\S_EnemyController.cs" />
      <Compile Include="Assets\Scripts\S_PlayerController.cs" />
      <Compile Include="Assets\Scripts\S_PlayerShield.cs" />
      <Compile Include="Assets\Scripts\S_PlayerWeapon.cs" />

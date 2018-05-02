@@ -73,35 +73,35 @@ public class S_PlayerController : MonoBehaviour
 			backSwingSpeed = 12.0f;
 			swingSpeed = 14.0f;
 			returnSpeed = 20.0f;
-			print ("Weapon Speed 1");
+			//print ("Weapon Speed 1");
 		}
 		else if (myWeaponWeight > 0.20f && myWeaponWeight <= 0.60f)
 		{
 			backSwingSpeed = 10.0f;
 			swingSpeed = 12.0f;
 			returnSpeed = 18.0f;
-			print ("Weapon Speed 2");
+			//print ("Weapon Speed 2");
 		}
 		else if (myWeaponWeight > 0.60f && myWeaponWeight <= 0.80f)
 		{
 			backSwingSpeed = 8.0f;
 			swingSpeed = 10.0f;
 			returnSpeed = 16.0f;
-			print ("Weapon Speed 3");
+			//print ("Weapon Speed 3");
 		}
 		else if (myWeaponWeight > 0.80f && myWeaponWeight <= 1.00f)
 		{
 			backSwingSpeed = 8.0f;
 			swingSpeed = 10.0f;
 			returnSpeed = 16.0f;
-			print ("Weapon Speed 4");
+			//print ("Weapon Speed 4");
 		}
 		else if (myWeaponWeight > 1.00f) // heaviest weapon, slowest speeds
 		{
 			backSwingSpeed = 6.0f;
 			swingSpeed = 8.0f;
 			returnSpeed = 14.0f;
-			print ("Weapon Speed 5");
+			//print ("Weapon Speed 5");
 		}
 
 		// set block speeds depending on shield weight
@@ -109,7 +109,7 @@ public class S_PlayerController : MonoBehaviour
 		{
 			raiseSpeed = 9.0f;
 			lowerSpeed = 15.0f;
-			print ("Shield Speed 1");
+			//print ("Shield Speed 1");
 		}
 
 //		float hAxis = Input.GetAxis ("Horizontal");
@@ -138,7 +138,7 @@ public class S_PlayerController : MonoBehaviour
 		{
 			currentSpeed = runSpeed;
 			isRunning = true;
-			print("running");
+			//print("running");
 		}
 		else
 		{
@@ -161,7 +161,7 @@ public class S_PlayerController : MonoBehaviour
 
 			myRigidBody.AddForce (myCamera.transform.forward * currentSpeed * Time.deltaTime);
 
-			print ("forwards");
+			//print ("forwards");
 		}
 			
 		// backwards
@@ -176,7 +176,7 @@ public class S_PlayerController : MonoBehaviour
 
 			myRigidBody.AddForce (-myCamera.transform.forward * currentSpeed * Time.deltaTime);
 
-			print ("backwards");
+			//print ("backwards");
 		}
 
 		// right
@@ -188,7 +188,7 @@ public class S_PlayerController : MonoBehaviour
 
 			myRigidBody.AddForce (myCamera.transform.right * currentSpeed * Time.deltaTime);
 
-			print ("right");
+			//print ("right");
 		}
 
 		// left
@@ -200,7 +200,7 @@ public class S_PlayerController : MonoBehaviour
 
 			myRigidBody.AddForce (-myCamera.transform.right * currentSpeed * Time.deltaTime);
 
-			print ("left");
+			//print ("left");
 		}
 
 //		if (Input.GetAxis ("Vertical") < 0.5 && Input.GetAxis ("Vertical") > -0.5f)
@@ -212,7 +212,7 @@ public class S_PlayerController : MonoBehaviour
 		// attacking
 		if (Input.GetKeyDown (KeyCode.Mouse0) && attacking == false && canAttack == true)
 		{
-			print ("Attack");
+			//print ("Attack");
 
 			// swing right arm
 			//myRightArm.transform.rotation = Quaternion.Lerp(myRightArm.transform.rotation, backSwingRotation, swingSpeed * Time.deltaTime);
@@ -231,7 +231,7 @@ public class S_PlayerController : MonoBehaviour
 		{
 			//if (myRightArm.transform.localRotation != Quaternion.Euler(-100.0f, playerRotationY, playerRotationZ))
 			//{
-			print ("backswing");
+			//print ("backswing");
 
 			myRightShoulder.transform.localRotation = Quaternion.Lerp (myRightShoulder.transform.localRotation, Quaternion.Euler (-100.0f, playerRotationY, playerRotationZ), Time.deltaTime * backSwingSpeed);
 			myRightElbow.transform.localRotation = Quaternion.Lerp (myRightElbow.transform.localRotation, Quaternion.Euler (-30.0f, playerRotationY, playerRotationZ), Time.deltaTime * backSwingSpeed * 2);
@@ -246,7 +246,7 @@ public class S_PlayerController : MonoBehaviour
 
 		if (attacking == true && swinging == true)
 		{
-			print ("swinging");
+			//print ("swinging");
 
 			myRightShoulder.transform.localRotation = Quaternion.Lerp (myRightShoulder.transform.localRotation, Quaternion.Euler (30.0f, playerRotationY, playerRotationZ), Time.deltaTime * swingSpeed);
 			myRightElbow.transform.localRotation = Quaternion.Lerp (myRightElbow.transform.localRotation, Quaternion.Euler (30.0f, playerRotationY, playerRotationZ), Time.deltaTime * backSwingSpeed * 2);
@@ -261,7 +261,7 @@ public class S_PlayerController : MonoBehaviour
 
 		if (attacking == false && backswinging == false && swinging == false)
 		{
-			print ("return");
+			//print ("return");
 
 			myRightShoulder.transform.localRotation = Quaternion.Lerp (myRightShoulder.transform.localRotation, Quaternion.Euler (0.0f, playerRotationY, playerRotationZ), Time.deltaTime * returnSpeed);
 			myRightElbow.transform.localRotation = Quaternion.Lerp (myRightElbow.transform.localRotation, Quaternion.Euler (0.0f, playerRotationY, playerRotationZ), Time.deltaTime * backSwingSpeed * 2);
@@ -277,7 +277,7 @@ public class S_PlayerController : MonoBehaviour
 		// blocking
 		if (Input.GetKey (KeyCode.Mouse1) && blocking == false)
 		{
-			print ("Block");
+			//print ("Block");
 
 			blocking = true;
 			raising = true;
@@ -287,7 +287,7 @@ public class S_PlayerController : MonoBehaviour
 
 		if (blocking == true && raising == true)
 		{
-			print ("raising");
+			//print ("raising");
 
 			canChangeWeapon = false;
 
@@ -310,7 +310,7 @@ public class S_PlayerController : MonoBehaviour
 
 		if (blocking == true && lowering == true)
 		{
-			print ("lowering");
+			//print ("lowering");
 
 			myLeftShoulder.transform.localRotation = Quaternion.Lerp (myLeftShoulder.transform.localRotation, Quaternion.Euler (0.0f, playerRotationY, playerRotationZ), Time.deltaTime * lowerSpeed);
 			myLeftElbow.transform.localRotation = Quaternion.Lerp (myLeftElbow.transform.localRotation, Quaternion.Euler (0.0f, playerRotationY, playerRotationZ), Time.deltaTime * lowerSpeed * 2);

@@ -104,37 +104,37 @@ public class S_CurrentWeapon : MonoBehaviour
 		{
 			currentWeapon = ballockDagger;
 			currentWeaponWeight = 0.94f;
-			print ("Ballock Dagger Equipped");
+			//print ("Ballock Dagger Equipped");
 		}
 		else if (ridingSword.activeInHierarchy == true)
 		{
 			currentWeapon = ridingSword;
 			currentWeaponWeight = 0.71f;
-			print ("Riding Sword Equipped");
+			//print ("Riding Sword Equipped");
 		}
 		else if (oakeshottTypeXIV.activeInHierarchy == true)
 		{
 			currentWeapon = oakeshottTypeXIV;
 			currentWeaponWeight = 1.10f;
-			print ("Oakshott Type XIV Equipped");
+			//print ("Oakshott Type XIV Equipped");
 		}
 		else if (tomahawk.activeInHierarchy == true)
 		{
 			currentWeapon = tomahawk;
 			currentWeaponWeight = 0.57f;
-			print ("Tomahawk Equipped");
+			//print ("Tomahawk Equipped");
 		}
 		else if (decoratedIronMace.activeInHierarchy == true)
 		{
 			currentWeapon = decoratedIronMace;
 			currentWeaponWeight = 1.17f;
-			print ("Decorated Iron Mace Equipped");
+			//print ("Decorated Iron Mace Equipped");
 		}
 		else if (quillionDagger.activeInHierarchy == true)
 		{
 			currentWeapon = quillionDagger;
 			currentWeaponWeight = 0.14f;
-			print ("Quillion Dagger Equipped");
+			//print ("Quillion Dagger Equipped");
 		}
 
 		// shield weights
@@ -142,7 +142,7 @@ public class S_CurrentWeapon : MonoBehaviour
 		{
 			currentShield = shield;
 			currentShieldWeight = 1.67f;
-			print ("Shield Equipped");
+			//print ("Shield Equipped");
 		}
 
 //		if (Input.GetKeyDown (KeyCode.X))
