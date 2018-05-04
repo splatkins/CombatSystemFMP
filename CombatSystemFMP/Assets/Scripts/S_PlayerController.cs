@@ -59,6 +59,11 @@ public class S_PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		if (Input.GetKey ("escape"))
+		{
+			Application.Quit ();
+		}
+
 		// set current weapon
 		myCurrentWeapon = this.GetComponent<S_CurrentWeapon>().currentWeapon;
 		myWeaponWeight = this.GetComponent<S_CurrentWeapon> ().currentWeaponWeight;
